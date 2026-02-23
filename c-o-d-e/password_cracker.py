@@ -18,8 +18,8 @@ def dictionory_attack(target_password, wordlist_path):
                 if attempt == target_password:
                     print(termcolor2.colored(f"password found {attempt}.", color="green"))
                     return attempt
-                else:
-                    print("NOT found")
+                elif attempt != target_password:
+                    print(termcolor2.colored("NOT FOUND!!!", color="red"))
                     return None
                 
     except FileNotFoundError:
@@ -40,14 +40,15 @@ while True:
 --             --     --             --
 -               -     -               - """, color="magenta"))
     
-    entery = int(input("""
+    entery = input("""
     [1] crack password
     [2] help
     [3] Exit
 
-    Your choose??: """))
+    Your choose??: """)
     
     if entery == 1:
+        # password is : ((pythoncrack))
         target = input("enter pasword: ")
         wordlist_file = "wordlist.txt" 
         dictionory_attack(target, wordlist_file)
@@ -61,7 +62,11 @@ while True:
         break
     
     else:
-        print("Invalid option")
+        print(termcolor2.colored("""
+Invalid Option!!
+TRY AGAIN...
+"""))
+        
     
     
     
